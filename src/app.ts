@@ -2,8 +2,8 @@ import express, { Request, Response } from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
 import config from './config/config'
-import { checkFirebaseToken } from './middlewares'
-import { userRoute } from './routes'
+// import { checkFirebaseToken } from './middlewares'
+import { userRoute, studySpaceRoute } from './routes'
 
 const app = express()
 
@@ -20,9 +20,10 @@ app.get('/', async (req: Request, res: Response) => {
 })
 
 // Atatch custom middlewares
-app.use(checkFirebaseToken)
+// app.use(checkFirebaseToken)
 
 // Setup routes
 app.use('/user', userRoute)
+app.use('/study-space', studySpaceRoute)
 
 export { app }
