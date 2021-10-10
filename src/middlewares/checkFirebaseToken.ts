@@ -6,7 +6,7 @@ const checkFirebaseToken = async (req: Request, res: Response, next: NextFunctio
   try {
     let firebaseToken = (req.headers.authorization as string) ?? ''
     firebaseToken = firebaseToken.replace('Bearer ', '').trim()
-    if (firebaseToken == null) {
+    if (firebaseToken == null || firebaseToken === '') {
       return res.status(401).send('Unauthorized.')
     }
 
