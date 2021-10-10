@@ -8,6 +8,9 @@ const userSchema = new Schema<UserType>({
     index: true,
     required: true,
   },
+  favouriteStudySpaces: {
+    type: Schema.Types.Array,
+  },
 })
 
 const UserModel = mongooseConnection.model<UserType>('users', userSchema)
