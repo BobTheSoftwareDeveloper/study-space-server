@@ -1,15 +1,15 @@
 import { ObjectId } from 'mongoose'
 
 export interface StudySpaceType {
-  name: String
-  description: String
-  images: Array<String>
-  occupancyLevel: Number
-  noiseLevel: Number
-  history: Array<Object>
+  name: string
+  description: string
+  images: Array<string>
+  occupancyLevel: number
+  noiseLevel: number
+  history: Array<Record<string, unknown>>
   location: {
-    latitude: Number
-    longitude: Number
+    latitude: number
+    longitude: number
   }
   _id: ObjectId
 }

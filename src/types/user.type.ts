@@ -1,5 +1,5 @@
 export interface UserType {
-  uid: String
-  name: String
-  favouriteStudySpaces: Array<object>
+  uid: string
+  name: string
+  favouriteStudySpaces: Array<Record<string, unknown>>
 }
