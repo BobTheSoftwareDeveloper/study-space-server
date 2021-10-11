@@ -5,6 +5,7 @@ export interface StudySpaceType {
   description: string
   images: Array<string>
   occupancyLevel: number
+  maxOccupancyLevel: number
   noiseLevel: number
   history: Array<Record<string, unknown>>
   location: {

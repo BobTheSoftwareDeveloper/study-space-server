@@ -12,6 +12,10 @@ const studySpaceSchema = new Schema<StudySpaceType>(
       type: Schema.Types.Number,
       index: true,
     },
+    maxOccupancyLevel: {
+      type: Schema.Types.Number,
+      index: true,
+    },
     noiseLevel: {
       type: Schema.Types.Number,
       index: true,
