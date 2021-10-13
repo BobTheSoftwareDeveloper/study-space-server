@@ -1,5 +1,3 @@
-import { ObjectId } from 'mongoose'
-
 export interface StudySpaceType {
   name: string
   description: string
@@ -12,5 +10,5 @@ export interface StudySpaceType {
     latitude: number
     longitude: number
   }
-  _id: ObjectId
+  _id: any
 }

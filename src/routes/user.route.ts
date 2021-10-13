@@ -1,4 +1,5 @@
 import { Request, Response, Router } from 'express'
+import { getFavouriteStudySpaces } from '../services/studySpace.service'
 import { errorHandler } from '../utils/errorHandler'
 import { UserType } from '../types'
 import { addUser, getUserDetails } from '../services/user.service'
@@ -32,5 +33,18 @@ userRoute
       return res.status(500).json(err.message)
     }
   })
+
+userRoute.route('/favourite').get(async (req: Request, res: Response) => {
+  try {
+    const uid = req.headers.uid as string
+
+    const data = await getFavouriteStudySpaces(uid)
+
+    return res.status(200).json(data)
+  } catch (err) {
+    errorHandler(err, 'userRoute /favourite get')
+    return res.status(500).json(err.message)
+  }
+})
 
 export { userRoute }
