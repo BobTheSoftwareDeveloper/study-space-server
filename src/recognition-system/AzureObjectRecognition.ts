@@ -39,7 +39,6 @@ export class AzureObjectRecognition extends ObjectRecognition {
   async detect(): Promise<number> {
     try {
       const result = await getDetectObjectResult(this.filePath)
-      console.log('result', result)
       const people = await countNumberOfPerson(result)
       return people
     } catch (err) {
