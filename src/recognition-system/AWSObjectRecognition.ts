@@ -3,6 +3,7 @@ import fs from 'fs'
 import { config } from './config'
 import { ObjectRecognition } from './ObjectRecognition'
 
+// Setup AWS client
 const AWSConfig = new AWS.Config({
   accessKeyId: config.AWS_ACCESS_KEY_ID,
   secretAccessKey: config.AWS_SECRET_KEY,

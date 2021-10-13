@@ -3,6 +3,7 @@ import { google } from '@google-cloud/vision/build/protos/protos'
 import fs from 'fs'
 import { ObjectRecognition } from './ObjectRecognition'
 
+// Setup Google Cloud client
 const client = new vision.ImageAnnotatorClient()
 
 const getDetectObjectResult = async (filePath: string): Promise<google.cloud.vision.v1.IAnnotateImageResponse> => {
