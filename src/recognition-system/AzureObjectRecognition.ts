@@ -20,11 +20,14 @@ const getDetectObjectResult = async (filePath: string): Promise<ComputerVisionMo
   return result
 }
 
-const countNumberOfPerson = async (result: ComputerVisionModels.DetectObjectsInStreamResponse): Promise<number> => {
+const countNumberOfPerson = async (
+  result: ComputerVisionModels.DetectObjectsInStreamResponse,
+  threshold: number
+): Promise<number> => {
   let peopleCounter = 0
   if (result.objects) {
     for (const obj of result.objects) {
-      if (obj?.object === 'person' && (obj?.confidence ?? 0) >= 0.5) {
+      if (obj?.object === 'person' && (obj?.confidence ?? 0) >= threshold) {
         peopleCounter += 1
       }
     }
@@ -40,7 +43,8 @@ export class AzureObjectRecognition extends ObjectRecognition {
   async detect(): Promise<number> {
     try {
       const result = await getDetectObjectResult(this.filePath)
-      const people = await countNumberOfPerson(result)
+      console.log('Azure result', result)
+      const people = await countNumberOfPerson(result, this.confidenceThreshold)
       return people
     } catch (err) {
       console.error('azure error:', err)

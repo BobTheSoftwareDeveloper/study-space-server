@@ -12,11 +12,14 @@ const getDetectObjectResult = async (filePath: string): Promise<google.cloud.vis
   return result
 }
 
-const countNumberOfPerson = async (result: google.cloud.vision.v1.IAnnotateImageResponse): Promise<number> => {
+const countNumberOfPerson = async (
+  result: google.cloud.vision.v1.IAnnotateImageResponse,
+  threshold: number
+): Promise<number> => {
   const labels = result.localizedObjectAnnotations
   let people = 0
   for (const labelObj of labels) {
-    if (labelObj.name === 'Person' && (labelObj?.score ?? 0) >= 0.5) {
+    if (labelObj.name === 'Person' && (labelObj?.score ?? 0) >= threshold) {
       people += 1
     }
   }
@@ -31,7 +34,7 @@ export class GoogleCloudObjectRecognition extends ObjectRecognition {
   async detect(): Promise<number> {
     try {
       const result = await getDetectObjectResult(this.filePath)
-      const people = await countNumberOfPerson(result)
+      const people = await countNumberOfPerson(result, this.confidenceThreshold)
       return people
     } catch (err) {
       console.error('google cloud error:', err)

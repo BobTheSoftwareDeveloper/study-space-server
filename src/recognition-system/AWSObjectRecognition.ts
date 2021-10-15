@@ -33,13 +33,17 @@ const getDetectObjectResult = async (filePath: string): Promise<AWS.Rekognition.
   return result
 }
 
-const countNumberOfPerson = async (result: AWS.Rekognition.DetectLabelsResponse): Promise<number> => {
+const countNumberOfPerson = async (
+  result: AWS.Rekognition.DetectLabelsResponse,
+  threshold: number
+): Promise<number> => {
   let people = 0
   if (result.Labels) {
     for (const label of result.Labels) {
       if (label.Name === 'Person') {
         for (const personObj of label?.Instances ?? []) {
-          if ((personObj?.Confidence ?? 0) >= 50) {
+          if ((personObj?.Confidence ?? 0) >= threshold * 100) {
+            // Confidence score in AWS is returned in percentage
             people += 1
           }
         }
@@ -57,7 +61,7 @@ export class AWSObjectRecognition extends ObjectRecognition {
   async detect(): Promise<number> {
     try {
       const result = await getDetectObjectResult(this.filePath)
-      const people = await countNumberOfPerson(result)
+      const people = await countNumberOfPerson(result, this.confidenceThreshold)
       return people
     } catch (err) {
       console.error('aws error:', err)

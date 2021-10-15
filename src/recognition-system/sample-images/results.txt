@@ -1,0 +1,19 @@
+lecture_hall_4_people.jpg
+Azure: 1
+AWS: 4
+Google Cloud: 3
+
+classroom_back_of_head.jpg
+Azure: 0
+AWS: 14
+Google Cloud: 8
+
+leture_hall_front_simple.jpg
+Azure: 1
+AWS: 11
+Google Cloud: 7
+
+student_study_space.jpg
+Azure: 0
+AWS: 9
+Google Cloud: 7
