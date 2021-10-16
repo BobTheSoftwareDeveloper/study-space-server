@@ -1,3 +1,8 @@
+student_study_space.jpg
+Azure: 0
+AWS: 9
+Google Cloud: 7
+
 lecture_hall_4_people.jpg
 Azure: 1
 AWS: 4
@@ -13,7 +18,3 @@ Azure: 1
 AWS: 11
 Google Cloud: 7
 
-student_study_space.jpg
-Azure: 0
-AWS: 9
-Google Cloud: 7
