@@ -16,7 +16,7 @@ if (config.NODE_ENV === 'development') {
 
 // Define a route handler for the default home page
 app.get('/', async (req: Request, res: Response) => {
-  res.status(200).send('A cool API :)')
+  res.status(200).send('Study space server API :)')
 })
 
 // Atatch custom middlewares
