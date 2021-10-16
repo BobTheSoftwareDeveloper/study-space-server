@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-backend-template",
+  "name": "study-space-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,8 +17,7 @@
     "prepare": "husky install"
   },
   "engines": {
-    "node": "^16.0.0",
-    "npm": "^7.0.0"
+    "node": "^14.0.0"
   },
   "keywords": [],
   "author": "",
